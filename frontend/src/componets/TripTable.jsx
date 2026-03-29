@@ -22,6 +22,8 @@ function TripTable() {
       case "TECHNICAL_ISSUE":
       case "BREAKDOWN":
       case "WEATHER_ALERT": return "danger";
+      break;
+      case "TRAFFIC" : return "warning";
       default: return "secondary";
     }
   };
