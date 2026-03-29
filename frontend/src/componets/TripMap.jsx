@@ -1,42 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 import { TripContext } from "../context/TripContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// 🔷 Custom truck icon with fuel indicator and tripId
+// 🔷 Optimized truck icon
 const createTruckIcon = (tripId, fuel) =>
   L.divIcon({
     html: `
       <div style="
-        position: relative;
-        display: flex; 
-        flex-direction: column;
-        align-items: center;
-        font-size: 26px;
-        text-shadow: 0 0 3px #000;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        font-size:26px;
+        transform: translateY(-5px);
       ">
         🚚
         <span style="
-          font-size: 12px; 
-          background: #fff; 
-          padding: 2px 4px; 
-          border-radius: 4px; 
-          box-shadow: 0 0 3px #000;
-          margin-top: 2px;
+          font-size:11px;
+          background:#fff;
+          padding:2px 4px;
+          border-radius:4px;
+          box-shadow:0 0 3px rgba(0,0,0,0.5);
+          margin-top:2px;
         ">${tripId}</span>
+
         <div style="
-          margin-top: 2px;
-          width: 28px;
-          height: 4px;
-          background: #ccc;
-          border-radius: 2px;
-          overflow: hidden;
+          margin-top:2px;
+          width:28px;
+          height:4px;
+          background:#ddd;
+          border-radius:2px;
+          overflow:hidden;
         ">
           <div style="
-            width: ${fuel}%;
-            height: 100%;
-            background: linear-gradient(90deg, #28a745, #ffc107);
+            width:${fuel}%;
+            height:100%;
+            background:${fuel < 30 ? "#dc3545" : fuel < 60 ? "#ffc107" : "#28a745"};
+            transition: width 0.5s ease;
           "></div>
         </div>
       </div>
@@ -44,7 +45,6 @@ const createTruckIcon = (tripId, fuel) =>
     className: "",
     iconSize: [35, 45],
     iconAnchor: [17, 45],
-    popupAnchor: [0, -45],
   });
 
 const TripMap = () => {
@@ -56,46 +56,70 @@ const TripMap = () => {
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
       {tripState.map((trip) => {
-        const path = [
-          [trip.tripRoute.start.lat, trip.tripRoute.start.lng],
-          ...trip.events.map((e) => [e.data.location.lat, e.data.location.lng]),
-          [trip.tripRoute.end.lat, trip.tripRoute.end.lng],
-        ];
-
         const event = trip.events[trip.currentEventIndex].data;
 
-        // 🔹 Polyline color based on alert
-        let lineColor = "green";
+        // ✅ Correct path (no duplication)
+        const path = trip.events.map((e) => [
+          e.data.location.lat,
+          e.data.location.lng,
+        ]);
+
+        // 🎨 Dynamic route color
+        let lineColor = "#198754"; // green
         if (event.alert?.type && event.alert.type !== "NONE") {
-          lineColor = "red";
+          lineColor = "#dc3545"; // red
         } else if (trip.status === "COMPLETED") {
-          lineColor = "blue";
+          lineColor = "#0d6efd"; // blue
         }
 
         return (
           <React.Fragment key={trip.tripId}>
+            
+            {/* 🚚 Moving Marker */}
             <Marker
-              position={[event.location.lat, event.location.lng]}
+              position={trip.position}
               icon={createTruckIcon(trip.tripId, event.fuel.level)}
             >
               <Popup>
-                <div style={{ width: "200px" }}>
+                <div style={{ width: "220px" }}>
                   <h6 className="mb-1">{trip.tripName}</h6>
-                  <p className="mb-1"><strong>Driver:</strong> {trip.driver}</p>
+
                   <p className="mb-1">
-                    <span className={`badge bg-${trip.status === 'IN_PROGRESS' ? 'warning' : trip.status === 'COMPLETED' ? 'success' : 'danger'}`}>
-                      {trip.status.replace("_"," ")}
-                    </span>
+                    👨‍✈️ <strong>{trip.driver}</strong>
                   </p>
+
+                  <span className={`badge bg-${
+                    trip.status === "IN_PROGRESS"
+                      ? "warning"
+                      : trip.status === "COMPLETED"
+                      ? "success"
+                      : "danger"
+                  }`}>
+                    {trip.status.replace("_", " ")}
+                  </span>
+
+                  <hr className="my-2"/>
+
                   <p className="mb-1">⛽ Fuel: {event.fuel.level}%</p>
                   <p className="mb-1">📈 Speed: {event.speed} km/h</p>
-                  <p className="mb-1">⚠ Alert: {event.alert?.type || "None"}</p>
+                  <p className="mb-1">
+                    ⚠ {event.alert?.type !== "NONE" ? event.alert.type : "No Alerts"}
+                  </p>
+
                   <small>📍 {event.location.name}</small>
                 </div>
               </Popup>
             </Marker>
 
-            <Polyline positions={path} color={lineColor} weight={5} opacity={0.6} />
+            {/* 🛣 Route */}
+            <Polyline
+              positions={path}
+              color={lineColor}
+              weight={5}
+              opacity={0.7}
+              dashArray={trip.status === "COMPLETED" ? "5,5" : ""}
+            />
+
           </React.Fragment>
         );
       })}

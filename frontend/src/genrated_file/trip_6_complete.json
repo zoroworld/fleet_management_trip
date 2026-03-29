@@ -2,7 +2,7 @@
     "tripId": "trip_006",
     "tripName": "Eastern Supply Delivery",
     "driver": "Sarah Lee",
-    "status": "IN_PROGRESS",
+    "status": "COMPLETED",
     "route": {
       "start": { "name": "Miami Warehouse", "lat": 25.7617, "lng": -80.1918 },
       "end": { "name": "Chicago Distribution Center", "lat": 41.8781, "lng": -87.6298 }

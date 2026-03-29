@@ -28,30 +28,56 @@ export const TripProvider = ({ children }) => {
     const interval = setInterval(() => {
       setTripState((prev) =>
         prev.map((t) => {
-          const currentEvent = t.events[t.currentEventIndex].data;
+          const currentEvent = t.events[t.currentEventIndex];
+          const data = currentEvent.data;
 
-          // Stop at the current event
-          const pos = [
-            currentEvent.location.lat,
-            currentEvent.location.lng,
-          ];
+          
+          const pos = [data.location.lat, data.location.lng];
+          console.log(data);
+          
 
-          let nextIndex = t.currentEventIndex + 1;
+          let nextIndex = t.currentEventIndex;
 
-          // If alert occurs, restart from start
-          if (currentEvent.alert && currentEvent.alert.type) {
-            nextIndex = 0;
+          //  STOP if already completed or cancelled
+          if (t.status === "COMPLETED" || t.status === "CANCELLED") {
+            return { ...t, position: pos };
           }
 
-          // Loop if reached the last event
-          if (nextIndex >= t.events.length) {
-            nextIndex = 0;
+          //  STOP at alert locations (but DO NOT reset)
+          if (data.alert && data.alert.type !== "NONE") {
+            return { ...t, position: pos };
           }
 
-          return { ...t, position: pos, currentEventIndex: nextIndex };
+          // ⏭ Move forward if possible
+          if (t.currentEventIndex < t.events.length - 1) {
+            nextIndex = t.currentEventIndex + 1;
+          }
+
+          const nextEvent = t.events[nextIndex];
+
+          // ✅ Dynamic status update
+          let newStatus = t.status;
+
+          if (nextEvent.type === "ARRIVAL") {
+            newStatus = "COMPLETED";
+          } else if (nextEvent.type === "CANCELLED") {
+            newStatus = "CANCELLED";
+          } else {
+            newStatus = "IN_PROGRESS";
+          }
+
+          return {
+            ...t,
+            position: [
+              nextEvent.data.location.lat,
+              nextEvent.data.location.lng,
+            ],
+            currentEventIndex: nextIndex,
+            status: newStatus, // 🔥 FIXED
+          };
         })
       );
-    }, 2000); // stay 2 seconds at each event
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
