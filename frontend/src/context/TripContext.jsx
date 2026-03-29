@@ -33,7 +33,7 @@ export const TripProvider = ({ children }) => {
 
           
           const pos = [data.location.lat, data.location.lng];
-          console.log(data);
+          // console.log(data);
           
 
           let nextIndex = t.currentEventIndex;

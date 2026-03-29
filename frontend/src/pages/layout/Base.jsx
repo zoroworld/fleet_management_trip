@@ -5,7 +5,7 @@ import Sidebar from './SideBar'
 
 function Base({ children }) {
   const[toggle, setToggle] = useState(false)
-  console.log(toggle);
+  // console.log(toggle);
   
   return (
     <>
