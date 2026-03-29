@@ -1,0 +1,35 @@
+{
+    "tripId": "trip_003",
+    "tripName": "Rocky Mountain Supply Run",
+    "driver": "Carlos Diaz",
+    "status": "CANCELLED",
+    "route": {
+      "start": { "name": "Denver", "lat": 39.7392, "lng": -104.9903 },
+      "end": { "name": "Aspen", "lat": 39.1911, "lng": -106.8175 }
+    },
+    "metadata": {
+      "routeType": "MOUNTAIN",
+      "terrain": "HILLS",
+      "trafficProfile": "LOW",
+      "weatherProfile": "EXTREME"
+    },
+    "events": [
+      {
+        "eventId": "e003",
+        "tripId": "trip_003",
+        "type": "WEATHER_ALERT",
+        "timestamp": "2026-03-28T07:30:00Z",
+        "data": {
+          "location": { "name": "Loveland Pass", "city": "Summit County", "state": "CO", "country": "USA", "lat": 39.75, "lng": -105.85 },
+          "speed": 0,
+          "progress": 0,
+          "fuel": { "level": 75 },
+          "weather": { "condition": "SNOW", "temperature": -5, "humidity": 80, "windSpeed": 40, "visibility": "LOW", "precipitation": "HEAVY" },
+          "road": { "type": "MOUNTAIN_PASS", "condition": "SLIPPERY" },
+          "environment": { "area": "MOUNTAIN", "traffic": "LOW" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "MEDIUM" } },
+          "alert": { "type": "WEATHER_ALERT", "severity": "HIGH", "message": "Route closed due to snowstorm" }
+        }
+      }
+    ]
+  }

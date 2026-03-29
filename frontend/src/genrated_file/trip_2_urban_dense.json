@@ -1,0 +1,35 @@
+{
+  "tripId": "trip_002",
+  "tripName": "Downtown Delivery Loop",
+  "driver": "Alice Johnson",
+  "status": "IN_PROGRESS",
+  "route": {
+    "start": { "name": "Chicago Central Station", "lat": 41.8781, "lng": -87.6298 },
+    "end": { "name": "East Side Depot, Chicago", "lat": 41.885, "lng": -87.620 }
+  },
+  "metadata": {
+    "routeType": "URBAN",
+    "terrain": "CITY",
+    "trafficProfile": "DENSE",
+    "weatherProfile": "VARIABLE"
+  },
+  "events": [
+    {
+      "eventId": "e002",
+      "tripId": "trip_002",
+      "type": "TRAFFIC_DELAY",
+      "timestamp": "2026-03-28T09:15:00Z",
+      "data": {
+        "location": { "name": "Michigan Ave", "city": "Chicago", "state": "IL", "country": "USA", "lat": 41.890, "lng": -87.624 },
+        "speed": 10,
+        "progress": 40,
+        "fuel": { "level": 60 },
+        "weather": { "condition": "CLEAR", "temperature": 15, "humidity": 55, "windSpeed": 5, "visibility": "HIGH", "precipitation": "NONE" },
+        "road": { "type": "CITY_ROAD", "condition": "WET" },
+        "environment": { "area": "URBAN", "traffic": "DENSE" },
+        "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+        "alert": { "type": "TRAFFIC", "severity": "MEDIUM", "message": "Heavy traffic ahead" }
+      }
+    }
+  ]
+}

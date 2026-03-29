@@ -1,0 +1,35 @@
+{
+    "tripId": "trip_001",
+    "tripName": "NYC → LA Cross Country",
+    "driver": "John Smith",
+    "status": "IN_PROGRESS",
+    "route": {
+      "start": { "name": "New York City", "lat": 40.7128, "lng": -74.006 },
+      "end": { "name": "Los Angeles", "lat": 34.0522, "lng": -118.2437 }
+    },
+    "metadata": {
+      "routeType": "CROSS_COUNTRY",
+      "terrain": "CITY",
+      "trafficProfile": "MEDIUM",
+      "weatherProfile": "VARIABLE"
+    },
+    "events": [
+      {
+        "eventId": "e001",
+        "tripId": "trip_001",
+        "type": "CHECKPOINT",
+        "timestamp": "2026-03-28T08:00:00Z",
+        "data": {
+          "location": { "name": "Philadelphia", "city": "Philadelphia", "state": "PA", "country": "USA", "lat": 39.9526, "lng": -75.1652 },
+          "speed": 65,
+          "progress": 15,
+          "fuel": { "level": 85 },
+          "weather": { "condition": "CLEAR", "temperature": 18, "humidity": 50, "windSpeed": 10, "visibility": "HIGH", "precipitation": "NONE" },
+          "road": { "type": "HIGHWAY", "condition": "GOOD" },
+          "environment": { "area": "HIGHWAY", "traffic": "MEDIUM" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "NONE", "severity": "LOW", "message": "" }
+        }
+      }
+    ]
+  }

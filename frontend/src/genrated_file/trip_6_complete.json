@@ -1,0 +1,103 @@
+{
+    "tripId": "trip_006",
+    "tripName": "Eastern Supply Delivery",
+    "driver": "Sarah Lee",
+    "status": "IN_PROGRESS",
+    "route": {
+      "start": { "name": "Miami Warehouse", "lat": 25.7617, "lng": -80.1918 },
+      "end": { "name": "Chicago Distribution Center", "lat": 41.8781, "lng": -87.6298 }
+    },
+    "metadata": {
+      "routeType": "CROSS_COUNTRY",
+      "terrain": "CITY",
+      "trafficProfile": "MEDIUM",
+      "weatherProfile": "VARIABLE"
+    },
+    "events": [
+      {
+        "eventId": "EVT001",
+        "tripId": "trip_006",
+        "type": "DEPARTURE",
+        "timestamp": "2026-03-28T07:00:00Z",
+        "data": {
+          "location": { "name": "Miami Warehouse", "city": "Miami", "state": "FL", "country": "USA", "lat": 25.7617, "lng": -80.1918 },
+          "speed": 0,
+          "progress": 0,
+          "fuel": { "level": 100 },
+          "weather": { "condition": "CLEAR", "temperature": 28, "humidity": 60, "windSpeed": 5, "visibility": "HIGH", "precipitation": "NONE" },
+          "road": { "type": "CITY_ROAD", "condition": "GOOD" },
+          "environment": { "area": "URBAN", "traffic": "MEDIUM" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "NONE", "severity": "LOW", "message": "" }
+        }
+      },
+      {
+        "eventId": "EVT002",
+        "tripId": "trip_006",
+        "type": "ON_ROUTE",
+        "timestamp": "2026-03-28T10:00:00Z",
+        "data": {
+          "location": { "name": "Orlando Stop", "city": "Orlando", "state": "FL", "country": "USA", "lat": 28.5383, "lng": -81.3792 },
+          "speed": 60,
+          "progress": 10,
+          "fuel": { "level": 90 },
+          "weather": { "condition": "CLEAR", "temperature": 27, "humidity": 55, "windSpeed": 6, "visibility": "HIGH", "precipitation": "NONE" },
+          "road": { "type": "HIGHWAY", "condition": "GOOD" },
+          "environment": { "area": "HIGHWAY", "traffic": "MEDIUM" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "NONE", "severity": "LOW", "message": "" }
+        }
+      },
+      {
+        "eventId": "EVT003",
+        "tripId": "trip_006",
+        "type": "ON_ROUTE",
+        "timestamp": "2026-03-28T14:00:00Z",
+        "data": {
+          "location": { "name": "Atlanta Stop", "city": "Atlanta", "state": "GA", "country": "USA", "lat": 33.7490, "lng": -84.3880 },
+          "speed": 65,
+          "progress": 35,
+          "fuel": { "level": 65 },
+          "weather": { "condition": "VARIABLE", "temperature": 24, "humidity": 50, "windSpeed": 10, "visibility": "MEDIUM", "precipitation": "LIGHT" },
+          "road": { "type": "HIGHWAY", "condition": "GOOD" },
+          "environment": { "area": "HIGHWAY", "traffic": "MEDIUM" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "NONE", "severity": "LOW", "message": "" }
+        }
+      },
+      {
+        "eventId": "EVT004",
+        "tripId": "trip_006",
+        "type": "ON_ROUTE",
+        "timestamp": "2026-03-28T20:00:00Z",
+        "data": {
+          "location": { "name": "Nashville Stop", "city": "Nashville", "state": "TN", "country": "USA", "lat": 36.1627, "lng": -86.7816 },
+          "speed": 60,
+          "progress": 65,
+          "fuel": { "level": 40 },
+          "weather": { "condition": "VARIABLE", "temperature": 20, "humidity": 55, "windSpeed": 12, "visibility": "MEDIUM", "precipitation": "MODERATE" },
+          "road": { "type": "HIGHWAY", "condition": "GOOD" },
+          "environment": { "area": "HIGHWAY", "traffic": "MEDIUM" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "FUEL_LOW", "severity": "MEDIUM", "message": "Refuel required soon" }
+        }
+      },
+      {
+        "eventId": "EVT005",
+        "tripId": "trip_006",
+        "type": "ARRIVAL",
+        "timestamp": "2026-03-29T08:00:00Z",
+        "data": {
+          "location": { "name": "Chicago Distribution Center", "city": "Chicago", "state": "IL", "country": "USA", "lat": 41.8781, "lng": -87.6298 },
+          "speed": 0,
+          "progress": 100,
+          "fuel": { "level": 10 },
+          "weather": { "condition": "CLEAR", "temperature": 15, "humidity": 50, "windSpeed": 5, "visibility": "HIGH", "precipitation": "NONE" },
+          "road": { "type": "CITY_ROAD", "condition": "GOOD" },
+          "environment": { "area": "URBAN", "traffic": "DENSE" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "NONE", "severity": "LOW", "message": "" }
+        }
+      }
+    ]
+  }

@@ -1,0 +1,89 @@
+{
+  "tripId": "string",
+  "tripName": "string",
+  "driver": "string",
+  "status": "IN_PROGRESS | COMPLETED | CANCELLED",
+
+  "route": {
+     "start": {
+        "name": "string",
+        "lat": "number",
+        "lng": "number"
+      },
+      "end": {
+        "name": "string",
+        "lat": "number",
+        "lng": "number"
+      }
+  },
+
+  "metadata": {
+    "routeType": "URBAN | HIGHWAY | MOUNTAIN | REGIONAL | CROSS_COUNTRY",
+    "terrain": "CITY | RURAL | HILLS | DESERT | FOREST",
+    "trafficProfile": "LOW | MEDIUM | DENSE",
+    "weatherProfile": "CLEAR | VARIABLE | EXTREME"
+  },
+
+  "events": [
+    {
+      "eventId": "string",
+      "tripId": "string",
+      "type": "EVENT_TYPE",
+      "timestamp": "ISO_STRING",
+
+      "data": {
+        "location": {
+          "name": "string",
+          "city": "string",
+          "state": "string",
+          "country": "string",
+          "lat": "number",
+          "lng": "number"
+        },
+
+        "speed": "number",
+        "progress": "number (0-100)",
+
+        "fuel": {
+          "level": "number (0-100)"
+        },
+
+        "weather": {
+          "condition": "WEATHER_TYPE",
+          "temperature": "number (°C)",
+          "humidity": "number (%)",
+          "windSpeed": "number (km/h)",
+          "visibility": "LOW | MEDIUM | HIGH",
+          "precipitation": "NONE | LIGHT | MODERATE | HEAVY"
+        },
+
+        "road": {
+          "type": "HIGHWAY | CITY_ROAD | INTERSECTION | MOUNTAIN_PASS",
+          "condition": "GOOD | WET | DAMAGED | SLIPPERY"
+        },
+
+        "environment": {
+          "area": "URBAN | RURAL | HIGHWAY | MOUNTAIN",
+          "traffic": "LOW | MEDIUM | DENSE"
+        },
+         "infrastructure": {
+          "bridge": {
+            "isOnBridge": "boolean",
+            "bridgeType": "SUSPENSION | ARCH | BEAM | CABLE_STAYED",
+            "name": "string",
+            "condition": "GOOD | UNDER_MAINTENANCE | DAMAGED",
+            "heightRestriction": "number (meters)",
+            "weightLimit": "number (tons)",
+            "riskLevel": "LOW | MEDIUM | HIGH"
+          }
+        },
+
+        "alert": {
+          "type": "BREAKDOWN | WEATHER_ALERT | TECHNICAL_ISSUE | FUEL_LOW",
+          "severity": "LOW | MEDIUM | HIGH",
+          "message": "string"
+        }
+      }
+    }
+  ]
+}

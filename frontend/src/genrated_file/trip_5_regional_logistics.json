@@ -1,0 +1,35 @@
+{
+    "tripId": "trip_005",
+    "tripName": "Regional Supply Chain",
+    "driver": "David Kim",
+    "status": "IN_PROGRESS",
+    "route": {
+      "start": { "name": "Chicago Warehouse", "lat": 41.8781, "lng": -87.6298 },
+      "end": { "name": "Springfield Depot", "lat": 39.7817, "lng": -89.6501 }
+    },
+    "metadata": {
+      "routeType": "REGIONAL",
+      "terrain": "CITY",
+      "trafficProfile": "LOW",
+      "weatherProfile": "CLEAR"
+    },
+    "events": [
+      {
+        "eventId": "e005",
+        "tripId": "trip_005",
+        "type": "FUEL_LOW",
+        "timestamp": "2026-03-28T11:30:00Z",
+        "data": {
+          "location": { "name": "I-55 Rest Stop", "city": "Lincoln", "state": "IL", "country": "USA", "lat": 40.1486, "lng": -89.3644 },
+          "speed": 60,
+          "progress": 70,
+          "fuel": { "level": 15 },
+          "weather": { "condition": "CLEAR", "temperature": 20, "humidity": 60, "windSpeed": 10, "visibility": "HIGH", "precipitation": "NONE" },
+          "road": { "type": "HIGHWAY", "condition": "GOOD" },
+          "environment": { "area": "HIGHWAY", "traffic": "LOW" },
+          "infrastructure": { "bridge": { "isOnBridge": false, "bridgeType": "BEAM", "name": "", "condition": "GOOD", "heightRestriction": 0, "weightLimit": 0, "riskLevel": "LOW" } },
+          "alert": { "type": "FUEL_LOW", "severity": "HIGH", "message": "Refuel immediately" }
+        }
+      }
+    ]
+  }
