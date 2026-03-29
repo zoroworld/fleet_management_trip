@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Header({setToggle}) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3 shadow-sm">
+    <nav className="mynavbar navbar navbar-expand-lg navbar-dark bg-dark p-3 shadow-sm">
 
       {/* Toggle button (for mobile) */}
       {/* <button
