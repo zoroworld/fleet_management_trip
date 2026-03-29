@@ -5,7 +5,7 @@
     "status": "IN_PROGRESS",
     "route": {
       "start": { "name": "Miami Warehouse", "lat": 25.7617, "lng": -80.1918 },
-      "end": { "name": "Chicago Distribution Center", "lat": 41.8781, "lng": -87.6298 }
+      "end": { "name": "Chicago Distribution Center", "lat": 42.8781, "lng": -88.6298 }
     },
     "metadata": {
       "routeType": "CROSS_COUNTRY",
@@ -88,7 +88,7 @@
         "type": "ARRIVAL",
         "timestamp": "2026-03-29T08:00:00Z",
         "data": {
-          "location": { "name": "Chicago Distribution Center", "city": "Chicago", "state": "IL", "country": "USA", "lat": 41.8781, "lng": -87.6298 },
+          "location": { "name": "Chicago Distribution Center", "city": "Chicago", "state": "IL", "country": "USA", "lat": 41.8641, "lng": -87.6568 },
           "speed": 0,
           "progress": 100,
           "fuel": { "level": 30 },

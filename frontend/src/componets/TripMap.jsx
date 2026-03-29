@@ -1,10 +1,16 @@
-import React, { useContext, useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
+import React, { useContext } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
 import { TripContext } from "../context/TripContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// 🔷 Optimized truck icon
+// 🔷 Truck icon
 const createTruckIcon = (tripId, fuel) =>
   L.divIcon({
     html: `
@@ -49,20 +55,42 @@ const createTruckIcon = (tripId, fuel) =>
 
 const TripMap = () => {
   const { tripState } = useContext(TripContext);
+
   const center = [39.8283, -98.5795];
 
   return (
-    <MapContainer center={center} zoom={4} style={{ height: "100%", width: "100%" }}>
+    <MapContainer
+      center={center}
+      zoom={4}
+      style={{ height: "100%", width: "100%" }}
+    >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-      {tripState.map((trip) => {
-        const event = trip.events[trip.currentEventIndex].data;
+      {tripState.map((trip, index) => {
+        // ✅ SAFE INDEX (fix missing trips)
+        const safeIndex =
+          trip.currentEventIndex < 0
+            ? 0
+            : Math.min(trip.currentEventIndex, trip.events.length - 1);
 
-        // ✅ Correct path (no duplication)
-        const path = trip.events.map((e) => [
-          e.data.location.lat,
-          e.data.location.lng,
-        ]);
+        const event = trip.events[safeIndex].data;
+
+        // ✅ STABLE OFFSET (no overlap, no flicker)
+        const offset = (index + 1) * 0.05;
+
+        const markerPosition = [
+          trip.position[0] + offset,
+          trip.position[1] + offset,
+        ];
+
+        // ✅ FULL PATH (includes route start)
+        const path = [
+          [trip.tripRoute.start.lat, trip.tripRoute.start.lng],
+          ...trip.events.map((e) => [
+            e.data.location.lat,
+            e.data.location.lng,
+          ]),
+        ];
 
         // 🎨 Dynamic route color
         let lineColor = "#198754"; // green
@@ -74,10 +102,9 @@ const TripMap = () => {
 
         return (
           <React.Fragment key={trip.tripId}>
-            
-            {/* 🚚 Moving Marker */}
+            {/* 🚚 Marker */}
             <Marker
-              position={trip.position}
+              position={markerPosition}
               icon={createTruckIcon(trip.tripId, event.fuel.level)}
             >
               <Popup>
@@ -88,22 +115,27 @@ const TripMap = () => {
                     👨‍✈️ <strong>{trip.driver}</strong>
                   </p>
 
-                  <span className={`badge bg-${
-                    trip.status === "IN_PROGRESS"
-                      ? "warning"
-                      : trip.status === "COMPLETED"
-                      ? "success"
-                      : "danger"
-                  }`}>
+                  <span
+                    className={`badge bg-${
+                      trip.status === "IN_PROGRESS"
+                        ? "warning"
+                        : trip.status === "COMPLETED"
+                        ? "success"
+                        : "danger"
+                    }`}
+                  >
                     {trip.status.replace("_", " ")}
                   </span>
 
-                  <hr className="my-2"/>
+                  <hr className="my-2" />
 
                   <p className="mb-1">⛽ Fuel: {event.fuel.level}%</p>
                   <p className="mb-1">📈 Speed: {event.speed} km/h</p>
                   <p className="mb-1">
-                    ⚠ {event.alert?.type !== "NONE" ? event.alert.type : "No Alerts"}
+                    ⚠{" "}
+                    {event.alert?.type !== "NONE"
+                      ? event.alert.type
+                      : "No Alerts"}
                   </p>
 
                   <small>📍 {event.location.name}</small>
@@ -119,7 +151,6 @@ const TripMap = () => {
               opacity={0.7}
               dashArray={trip.status === "COMPLETED" ? "5,5" : ""}
             />
-
           </React.Fragment>
         );
       })}

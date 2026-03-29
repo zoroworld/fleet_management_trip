@@ -20,7 +20,7 @@
         "type": "FUEL_LOW",
         "timestamp": "2026-03-28T11:30:00Z",
         "data": {
-          "location": { "name": "I-55 Rest Stop", "city": "Lincoln", "state": "IL", "country": "USA", "lat": 40.1486, "lng": -89.3644 },
+          "location": { "name": "I-55 Rest Stop", "city": "Lincoln", "state": "IL", "country": "USA", "lat": 50.1486, "lng": -89.3644 },
           "speed": 60,
           "progress": 70,
           "fuel": { "level": 15 },
