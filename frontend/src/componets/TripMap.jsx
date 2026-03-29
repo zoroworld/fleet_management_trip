@@ -64,7 +64,9 @@ const TripMap = () => {
       zoom={4}
       style={{ height: "100%", width: "100%" }}
     >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
       {tripState.map((trip, index) => {
         // ✅ SAFE INDEX (fix missing trips)
@@ -116,13 +118,12 @@ const TripMap = () => {
                   </p>
 
                   <span
-                    className={`badge bg-${
-                      trip.status === "IN_PROGRESS"
-                        ? "warning"
-                        : trip.status === "COMPLETED"
+                    className={`badge bg-${trip.status === "IN_PROGRESS"
+                      ? "warning"
+                      : trip.status === "COMPLETED"
                         ? "success"
                         : "danger"
-                    }`}
+                      }`}
                   >
                     {trip.status.replace("_", " ")}
                   </span>
