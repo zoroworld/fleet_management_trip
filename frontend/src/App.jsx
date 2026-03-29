@@ -7,6 +7,7 @@ import { TripProvider } from './context/TripContext';
 import Drivers from './pages/Drivers';
 import Trip from './pages/Trip';
 import Base from './pages/layout/Base';
+import History from './pages/History';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/drivers" element={<Drivers />} />
           <Route path="/trips" element={<Trip />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </Base>
     </>

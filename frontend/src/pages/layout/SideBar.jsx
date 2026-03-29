@@ -42,6 +42,12 @@ function Sidebar() {
           </NavLink>
         </li>
 
+        <li>
+          <NavLink to="/history" className="nav-link text-white">
+            History
+          </NavLink>
+        </li>
+
 
       </ul>
 
