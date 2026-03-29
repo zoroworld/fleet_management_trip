@@ -80,7 +80,7 @@ p {
 
 nav.mynavbar.navbar.navbar-expand-lg.navbar-dark.bg-dark.p-3.shadow-sm {
   position: sticky;
-  z-index: 1000;
+  z-index: 1000000;
   width: 100%;
   top: 0;
 }
