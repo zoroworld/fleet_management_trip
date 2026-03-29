@@ -95,12 +95,8 @@ const TripMap = () => {
         ];
 
         // 🎨 Dynamic route color
-        let lineColor = "#198754"; // green
-        if (event.alert?.type && event.alert.type !== "NONE") {
-          lineColor = "#dc3545"; // red
-        } else if (trip.status === "COMPLETED") {
-          lineColor = "#0d6efd"; // blue
-        }
+        let lineColor = "#0d6efd"; // green
+        
 
         return (
           <React.Fragment key={trip.tripId}>
