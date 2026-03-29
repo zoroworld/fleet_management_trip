@@ -91,7 +91,7 @@
           "location": { "name": "Chicago Distribution Center", "city": "Chicago", "state": "IL", "country": "USA", "lat": 41.8781, "lng": -87.6298 },
           "speed": 0,
           "progress": 100,
-          "fuel": { "level": 10 },
+          "fuel": { "level": 30 },
           "weather": { "condition": "CLEAR", "temperature": 15, "humidity": 50, "windSpeed": 5, "visibility": "HIGH", "precipitation": "NONE" },
           "road": { "type": "CITY_ROAD", "condition": "GOOD" },
           "environment": { "area": "URBAN", "traffic": "DENSE" },
