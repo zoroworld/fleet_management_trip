@@ -31,10 +31,13 @@ export const TripProvider = ({ children }) => {
           const currentEvent = t.events[t.currentEventIndex];
           const data = currentEvent.data;
 
-          
-          const pos = [data.location.lat, data.location.lng];
+          // 👇 FIX: use current position properly
+          const pos =
+            t.currentEventIndex === 0
+              ? t.position // stay at route.start initially
+              : [data.location.lat, data.location.lng];
           // console.log(data);
-          
+
 
           let nextIndex = t.currentEventIndex;
 
