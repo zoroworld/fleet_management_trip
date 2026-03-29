@@ -3,19 +3,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function Header({setToggle}) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light p-3 shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3 shadow-sm">
 
       {/* Toggle button (for mobile) */}
-      <button
+      {/* <button
         className="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarContent"
       >
         <span className="navbar-toggler-icon"></span>
+      </button> */}
+
+      <button type="button" className="btn btn-secondary btn-sm" onClick={(prev)=>setToggle(prev=> !prev)}>
+        <span className="navbar-toggler-icon"></span>
       </button>
+
 
       {/* Right Side */}
       <div className="collapse navbar-collapse justify-content-end" id="navbarContent">

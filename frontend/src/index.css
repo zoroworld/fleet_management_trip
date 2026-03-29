@@ -46,3 +46,32 @@ p {
   margin: 0;
 }
 
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #212529;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Visible */
+.sidebar-show {
+  transform: translateX(0);
+}
+
+/* Hidden (slide left) */
+.sidebar-hide {
+  transform: translateX(-100%);
+}
+
+.main-content-container {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content-container.full {
+  margin-left: 0;
+}

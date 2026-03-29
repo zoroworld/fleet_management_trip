@@ -4,9 +4,9 @@ import Base from './layout/Base'
 function Vehicles() {
     return (
         <>
-            <Base>
-                Vehicles management
-            </Base>
+
+            <h1>Vehicles management</h1>
+
         </>
     )
 }

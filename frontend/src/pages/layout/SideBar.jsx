@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
+
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
       style={{ width: "250px", minHeight: "100vh" }}
@@ -25,19 +26,19 @@ function Sidebar() {
 
         <li>
           <NavLink to="/vehicles" className="nav-link text-white">
-            🚗 Vehicles 
+            🚗 Vehicles
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/drivers" className="nav-link text-white">
-          🧑‍✈️ Drivers 
+            🧑‍✈️ Drivers
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/trips" className="nav-link text-white">
-          🛣️ Trips 
+            🛣️ Trips
           </NavLink>
         </li>
 
@@ -53,6 +54,7 @@ function Sidebar() {
         </NavLink>
       </div>
     </div>
+
   )
 }
 

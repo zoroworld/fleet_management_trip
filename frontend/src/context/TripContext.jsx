@@ -105,6 +105,7 @@ export const TripProvider = ({ children }) => {
           backgroundColor: "rgba(13,110,253,0.7)"
         }]
       },
+
       speedData: {
         labels: tripState.map(t => t.driver),
         datasets: [{
@@ -113,6 +114,7 @@ export const TripProvider = ({ children }) => {
           backgroundColor: "rgba(25,135,84,0.7)"
         }]
       },
+
       weatherData: {
         labels: tripState.map(t => t.driver),
         datasets: [{
@@ -120,7 +122,49 @@ export const TripProvider = ({ children }) => {
           data: tripState.map(t => t.events[t.currentEventIndex].data.weather.temperature),
           backgroundColor: "rgba(255,193,7,0.7)"
         }]
-      }
+      },
+
+      // ✅ NEW: Trip Progress
+      progressData: {
+        labels: tripState.map(t => t.driver),
+        datasets: [{
+          label: "Trip Progress (%)",
+          data: tripState.map(t => t.events[t.currentEventIndex].data.progress),
+          borderColor: "#6f42c1",
+          backgroundColor: "rgba(111,66,193,0.2)",
+          tension: 0.4
+        }]
+      },
+
+      // ✅ NEW: Traffic Distribution
+      trafficData: (() => {
+        const trafficCount = { LOW: 0, MEDIUM: 0, DENSE: 0 };
+
+        tripState.forEach(t => {
+          const traffic = t.events[t.currentEventIndex].data.environment.traffic;
+          if (trafficCount[traffic] !== undefined) {
+            trafficCount[traffic]++;
+          }
+        });
+
+        return {
+          labels: ["Low", "Medium", "Dense"],
+          datasets: [{
+            label: "Traffic Conditions",
+            data: [
+              trafficCount.LOW,
+              trafficCount.MEDIUM,
+              trafficCount.DENSE
+            ],
+            backgroundColor: [
+              "#198754",  // green
+              "#ffc107",  // yellow
+              "#dc3545"   // red
+            ]
+          }]
+        };
+      })()
+
     };
   }, [tripState]);
 
@@ -166,8 +210,10 @@ export const TripProvider = ({ children }) => {
   }, [tripState]);
 
   return (
-    <TripContext.Provider value={{ tripState, allTrips, kpis, chartData,  alerts: alertsAndLogs.alerts,
-      logs: alertsAndLogs.logs }}>
+    <TripContext.Provider value={{
+      tripState, allTrips, kpis, chartData, alerts: alertsAndLogs.alerts,
+      logs: alertsAndLogs.logs
+    }}>
       {children}
     </TripContext.Provider>
   );

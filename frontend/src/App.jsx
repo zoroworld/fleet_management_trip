@@ -6,18 +6,20 @@ import Vehicles from './pages/Vehicles';
 import { TripProvider } from './context/TripContext';
 import Drivers from './pages/Drivers';
 import Trip from './pages/Trip';
+import Base from './pages/layout/Base';
 
 function App() {
   return (
     <>
-     <TripProvider>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/vehicles" element={<Vehicles />} />
-        <Route path="/drivers" element={<Drivers />} />
-        <Route path="/trips" element={<Trip />} />
-      </Routes>
-      </TripProvider>
+
+      <Base>
+        <Routes>
+          <Route path="/" element={<TripProvider><Dashboard /></TripProvider>} />
+          <Route path="/vehicles" element={<Vehicles />} />
+          <Route path="/drivers" element={<Drivers />} />
+          <Route path="/trips" element={<Trip />} />
+        </Routes>
+      </Base>
     </>
   )
 }
