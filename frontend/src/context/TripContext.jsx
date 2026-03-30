@@ -31,7 +31,7 @@ export const TripProvider = ({ children }) => {
           const currentEvent = t.events[t.currentEventIndex];
           const data = currentEvent.data;
 
-          // 👇 FIX: use current position properly
+          // use current position properly
           const pos =
             t.currentEventIndex === 0
               ? t.position // stay at route.start initially
@@ -58,7 +58,7 @@ export const TripProvider = ({ children }) => {
 
           const nextEvent = t.events[nextIndex];
 
-          // ✅ Dynamic status update
+          //  Dynamic status update
           let newStatus = t.status;
 
           if (nextEvent.type === "ARRIVAL") {
@@ -76,7 +76,7 @@ export const TripProvider = ({ children }) => {
               nextEvent.data.location.lng,
             ],
             currentEventIndex: nextIndex,
-            status: newStatus, // 🔥 FIXED
+            status: newStatus,
           };
         })
       );
@@ -153,7 +153,7 @@ export const TripProvider = ({ children }) => {
         }]
       },
 
-      // ✅ NEW: Trip Progress
+      //  Trip Progress
       progressData: {
         labels: tripState.map(t => t.driver),
         datasets: [{
@@ -165,7 +165,7 @@ export const TripProvider = ({ children }) => {
         }]
       },
 
-      // ✅ NEW: Traffic Distribution
+      // Traffic Distribution
       trafficData: (() => {
         const trafficCount = { LOW: 0, MEDIUM: 0, DENSE: 0 };
 
@@ -219,7 +219,7 @@ export const TripProvider = ({ children }) => {
 
         logs.push(logItem);
 
-        // ✅ Only push alerts if severity exists
+        // Only push alerts if severity exists
         if (data.alert && data.alert.type && data.alert.type !== "NONE") {
           alerts.push({
             ...logItem,
