@@ -10,7 +10,7 @@
     |  Bottom: Alerts + Logs                         |
     --------------------------------------------------
 
-# schema in genrated_file
+# schema in genrated_file use for
 
 1. one point to another point.
 2. see fuel, speed, weather, damange road or not (infrastructure ), traffic(dense, low)
