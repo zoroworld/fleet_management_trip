@@ -10,7 +10,7 @@ import { TripContext } from "../context/TripContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// 🔷 Truck icon
+// Truck icon
 const createTruckIcon = (tripId, fuel) =>
   L.divIcon({
     html: `
@@ -94,7 +94,7 @@ const TripMap = () => {
           ]),
         ];
 
-        // 🎨 Dynamic route color
+        // Dynamic route color
         let lineColor = "#0d6efd"; // green
         
 
